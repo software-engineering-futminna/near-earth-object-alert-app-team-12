@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEO Alert — Near-Earth Object Tracker</title>
+<meta name="description" content="A live, colour-coded dashboard tracking Near-Earth Objects using NASA's NeoWs API.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="radar" aria-hidden="true">
+      <div class="radar__ring radar__ring--1"></div>
+      <div class="radar__ring radar__ring--2"></div>
+      <div class="radar__ring radar__ring--3"></div>
+      <div class="radar__sweep"></div>
+      <div class="radar__blip radar__blip--1"></div>
+      <div class="radar__blip radar__blip--2"></div>
+      <div class="radar__blip radar__blip--3"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="eyebrow">NASA NeoWs LIVE FEED</p>
+      <h1 class="hero__title">NEO Alert</h1>
+      <p class="hero__subtitle">Every object crossing near Earth this week — read in one glance, no science degree required.</p>
+
+      <div class="hero__meta">
+        <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+        <span id="statusText">Connecting to NASA…</span>
+        <span class="hero__divider">·</span>
+        <span id="rangeText">—</span>
+      </div>
+    </div>
+  </header>
+  <section class="legend" aria-label="Risk level key">
+    <div class="legend__item">
+      <span class="legend__swatch legend__swatch--safe"></span>
+      <span><strong>Safe</strong> — not flagged, comfortable distance</span>
+    </div>
+    <div class="legend__item">
+      <span class="legend__swatch legend__swatch--caution"></span>
+      <span><strong>Caution</strong> — worth a glance, not flagged hazardous</span>
+    </div>
+    <div class="legend__item">
+      <span class="legend__swatch legend__swatch--hazard"></span>
+      <span><strong>Hazardous</strong> — NASA-flagged potentially hazardous</span>
+    </div>
+  </section>
+  <section class="controls">
+    <div class="controls__count" id="resultCount" aria-live="polite"></div>
+    <div class="controls__filters" role="group" aria-label="Filter by risk level">
+      <button class="filter-btn is-active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="hazard">Hazardous</button>
+      <button class="filter-btn" data-filter="caution">Caution</button>
+      <button class="filter-btn" data-filter="safe">Safe</button>
+    </div>
+  </section>
+  <main>
+    <div class="state state--loading" id="loadingState">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Scanning near-Earth space…</p>
+    </div>
+    <div class="state state--error" id="errorState" hidden>
+      <p class="state__title">Signal lost.</p>
+      <p class="state__body" id="errorMessage">We couldn't reach NASA's tracking feed. Check your connection and try again.</p>
+      <button class="btn" id="retryBtn">Try again</button>
+    </div>
+    <div class="state state--empty" id="emptyState" hidden>
+      <p class="state__title">All clear.</p>
+      <p class="state__body">No near-Earth objects logged for this window.</p>
+    </div>
+    <div class="grid" id="cardGrid" hidden></div>
+  </main>
+
+  <footer class="footer">
+    <p>Data via NASA's <a href="https://api.nasa.gov/" target="_blank" rel="noopener">Near Earth Object Web Service</a>. Distances and sizes are NASA estimates, not guarantees. This page runs entirely in your browser — nothing is stored or sent anywhere else.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
