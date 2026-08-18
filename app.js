@@ -1,15 +1,9 @@
-/* =========================================================
-   NEO ALERT — APP LOGIC
-   Vanilla JS. No frameworks, no backend. Talks directly to
-   NASA's NeoWs API from the browser.
-   ========================================================= */
+
 const NASA_API_KEY = "FXMdnkVrcCieViC2VzjCr1FMUQYrX3cReQwYIZUk";
 
 const CACHE_TTL_MS = 1000 * 60 * 30; // 30 minutes — see Risk Assessment: API rate limiting
 
-// -----------------------------------------------------------
-// DOM REFERENCES
-// -----------------------------------------------------------
+
 const els = {
   statusDot: document.getElementById("statusDot"),
   statusText: document.getElementById("statusText"),
@@ -27,9 +21,7 @@ const els = {
 let allAsteroids = [];
 let activeFilter = "all";
 
-// -----------------------------------------------------------
-// DATE HELPERS — NeoWs /feed accepts a max 7-day window
-// -----------------------------------------------------------
+
 function formatDate(d) {
   return d.toISOString().split("T")[0];
 }
@@ -41,9 +33,7 @@ function getDateRange() {
   return { start: formatDate(start), end: formatDate(end) };
 }
 
-// -----------------------------------------------------------
-// FETCH + CACHE
-// -----------------------------------------------------------
+
 async function fetchNeoData(start, end) {
   const cacheKey = `neo-alert:${start}:${end}`;
   const cached = readCache(cacheKey);
@@ -84,9 +74,7 @@ function writeCache(key, payload) {
   }
 }
 
-// -----------------------------------------------------------
-// TRANSFORM — flatten NASA's date-grouped object into one list
-// -----------------------------------------------------------
+
 function flattenAndProcess(rawData) {
   const byDate = rawData.near_earth_objects || {};
   const list = [];
@@ -131,9 +119,7 @@ function getRiskTier(isHazardous, lunarDistances) {
   return "safe";
 }
 
-// -----------------------------------------------------------
-// RENDER
-// -----------------------------------------------------------
+
 function renderCards(list) {
   els.grid.innerHTML = list.map(cardTemplate).join("");
 }
@@ -179,9 +165,7 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// -----------------------------------------------------------
-// STATE MACHINE (loading / error / empty / loaded)
-// -----------------------------------------------------------
+
 function showState(state) {
   els.loadingState.hidden = state !== "loading";
   els.errorState.hidden = state !== "error";
@@ -194,9 +178,7 @@ function setStatus(mode, text) {
   els.statusText.textContent = text;
 }
 
-// -----------------------------------------------------------
-// FILTERING
-// -----------------------------------------------------------
+
 function applyFilter() {
   const filtered = activeFilter === "all"
     ? allAsteroids
@@ -221,9 +203,7 @@ els.filterBtns.forEach((btn) => {
   });
 });
 
-// -----------------------------------------------------------
-// BOOT
-// -----------------------------------------------------------
+
 async function init() {
   showState("loading");
   setStatus(null, "Connecting to NASA…");

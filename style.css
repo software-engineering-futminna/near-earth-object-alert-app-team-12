@@ -1,6 +1,3 @@
-/* =========================================================
-   NEO ALERT — DESIGN TOKENS
-   ========================================================= */
 :root {
   --bg-void: #080B14;
   --bg-panel: #121A2E;
@@ -51,9 +48,6 @@ a { color: var(--brand); }
   border-radius: 4px;
 }
 
-/* =========================================================
-   HERO / RADAR SIGNATURE
-   ========================================================= */
 .hero {
   position: relative;
   overflow: hidden;
@@ -170,9 +164,7 @@ a { color: var(--brand); }
 .status-dot.is-live { background: var(--safe); animation: none; }
 .status-dot.is-error { background: var(--hazard); animation: none; }
 
-/* =========================================================
-   LEGEND
-   ========================================================= */
+
 .legend {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -197,9 +189,7 @@ a { color: var(--brand); }
 
 .legend strong { color: var(--text-primary); }
 
-/* =========================================================
-   CONTROLS
-   ========================================================= */
+
 .controls {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -241,9 +231,7 @@ a { color: var(--brand); }
   border-color: var(--brand);
 }
 
-/* =========================================================
-   STATES (loading / error / empty)
-   ========================================================= */
+
 .state {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -284,9 +272,7 @@ a { color: var(--brand); }
 }
 .btn:hover { filter: brightness(1.08); }
 
-/* =========================================================
-   CARD GRID
-   ========================================================= */
+
 .grid {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -371,9 +357,7 @@ a { color: var(--brand); }
   margin: 0;
 }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+
 .footer {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -384,9 +368,7 @@ a { color: var(--brand); }
   padding-top: 24px;
 }
 
-/* =========================================================
-   RESPONSIVE — 375px to 1920px
-   ========================================================= */
+
 @media (max-width: 640px) {
   .hero { padding: 56px 18px 44px; }
   .radar { opacity: 0.3; right: -220px; }
@@ -399,9 +381,7 @@ a { color: var(--brand); }
   .max-width, .hero__content, .legend, .controls, .grid, .footer { max-width: 1400px; }
 }
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
   .radar__sweep, .radar__blip, .status-dot, .spinner { animation: none !important; }
   .card { transition: none; }
