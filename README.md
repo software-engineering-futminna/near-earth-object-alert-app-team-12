@@ -38,6 +38,5 @@ A live, colour-coded dashboard tracking Near-Earth Objects using NASA's NeoWs AP
 - Ibrahim Abdallah Salihu — 2024/1/96954SW
 - Surajudeen Abdullah Adebayo — 2024/1/95628SW
 - Micheal Ugochukwu — 2024/1/96174SW
-- Ibrahim Abdallah Salihu — 2024/1/96954SW
-- Surajudeen Abdullah Adebayo — 2024/1/95628SW
-- Micheal Ugochukwu — 2024/1/96174SW
+
+
