@@ -21,16 +21,15 @@ A live, colour-coded dashboard tracking Near-Earth Objects using NASA's NeoWs AP
 
 | Level | Meaning |
 |---|---|
-| Green means Safe | Not flagged, comfortable distance |
-| yellow means Caution | Not flagged hazardous, but within 20 lunar distances |
-| red means Hazardous | NASA-flagged as potentially hazardous |
+| Green : Safe | Not flagged, comfortable distance |
+| yellow : Caution | Not flagged hazardous, but within 20 lunar distances |
+| red : Hazardous | NASA-flagged as potentially hazardous |
 
 ## Setup
 
 1. Clone this repository
 2. Get a free API key at [api.nasa.gov](https://api.nasa.gov/)
-3. Replace the API key in `app.js`
-4. Open `index.html` in any browser — no build step required
+3. Open `index.html` in any browser — no build step required
 
 ## Team 12
 
